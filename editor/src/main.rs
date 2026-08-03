@@ -4,7 +4,9 @@ use gpui::{
     App, AppContext, Bounds, KeyBinding, Menu, MenuItem, QuitMode, WindowBounds, WindowOptions, px,
     size,
 };
-use gpui_component::actions::{SelectDown, SelectUp};
+use gpui_component::actions::{
+    SelectDown, SelectLeft, SelectPageDown, SelectPageUp, SelectRight, SelectUp,
+};
 use gpui_component::dock::ClosePanel;
 use gpui_component::input::{
     Backspace, Copy, Cut, Delete, DeleteToBeginningOfLine, DeleteToEndOfLine, DeleteToNextWordEnd,
@@ -113,10 +115,14 @@ fn register_component_bindings(cx: &mut App) {
         KeyBinding::new("right", MoveRight, INPUT),
         KeyBinding::new("pageup", MovePageUp, INPUT),
         KeyBinding::new("pagedown", MovePageDown, INPUT),
+        KeyBinding::new("shift-pageup", SelectPageUp, INPUT),
+        KeyBinding::new("shift-pagedown", SelectPageDown, INPUT),
         KeyBinding::new("home", MoveHome, INPUT),
         KeyBinding::new("end", MoveEnd, INPUT),
         KeyBinding::new("tab", IndentInline, INPUT),
         KeyBinding::new("shift-tab", OutdentInline, INPUT),
+        KeyBinding::new("shift-left", SelectLeft, INPUT),
+        KeyBinding::new("shift-right", SelectRight, INPUT),
         KeyBinding::new("shift-up", SelectUp, INPUT),
         KeyBinding::new("shift-down", SelectDown, INPUT),
         KeyBinding::new("shift-home", SelectToStartOfLine, INPUT),
